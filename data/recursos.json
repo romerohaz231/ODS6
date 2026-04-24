@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "titulo": "Informe Mundial sobre el Desarrollo de los Recursos Hídricos 2023",
+    "tipo": "PDF / Informe",
+    "organizacion": "UNESCO / ONU-Agua",
+    "url": "https://www.unwater.org/publications/un-world-water-development-report-2023",
+    "descripcion": "El informe anual más completo sobre el estado del agua en el mundo. Incluye datos por país, tendencias, proyecciones y recomendaciones de política pública.",
+    "icono": "📘",
+    "etiqueta": "Informe Técnico"
+  },
+  {
+    "id": 2,
+    "titulo": "Portal de datos del ODS 6 — Seguimiento global",
+    "tipo": "Base de datos interactiva",
+    "organizacion": "ONU-Agua",
+    "url": "https://sdg6data.org",
+    "descripcion": "Plataforma interactiva con datos actualizados sobre el progreso de cada indicador del ODS 6 por país. Incluye gráficas, mapas y descarga de datos en formato abierto.",
+    "icono": "🌐",
+    "etiqueta": "Datos Oficiales"
+  },
+  {
+    "id": 3,
+    "titulo": "WASH: Agua, Saneamiento e Higiene en Escuelas",
+    "tipo": "Guía práctica",
+    "organizacion": "UNICEF",
+    "url": "https://www.unicef.org/wash",
+    "descripcion": "Guías y materiales educativos para implementar programas de agua limpia, saneamiento e higiene en centros escolares. Disponible en español.",
+    "icono": "🏫",
+    "etiqueta": "Educación"
+  },
+  {
+    "id": 4,
+    "titulo": "Manual de Uso Eficiente del Agua para el Hogar",
+    "tipo": "Guía práctica",
+    "organizacion": "CONAGUA / México",
+    "url": "https://www.gob.mx/conagua",
+    "descripcion": "Consejos prácticos para reducir el consumo de agua en el hogar, calcular tu huella hídrica y adoptar hábitos sostenibles. Lenguaje sencillo y accesible.",
+    "icono": "🏠",
+    "etiqueta": "Acción Individual"
+  },
+  {
+    "id": 5,
+    "titulo": "Directrices de la OMS sobre Calidad del Agua Potable",
+    "tipo": "Norma técnica",
+    "organizacion": "Organización Mundial de la Salud",
+    "url": "https://www.who.int/publications/i/item/9789240045064",
+    "descripcion": "Estándares internacionales de calidad para el agua de consumo humano. Referencia esencial para gobiernos, operadores de sistemas de agua y técnicos de salud.",
+    "icono": "💊",
+    "etiqueta": "Salud Pública"
+  },
+  {
+    "id": 6,
+    "titulo": "Herramienta de cálculo de huella hídrica personal",
+    "tipo": "Calculadora interactiva",
+    "organizacion": "Water Footprint Network",
+    "url": "https://www.waterfootprint.org",
+    "descripcion": "Calcula cuánta agua virtual consume tu dieta, tu ropa y tus productos cotidianos. Una herramienta educativa poderosa para entender el impacto real de nuestras decisiones.",
+    "icono": "🧮",
+    "etiqueta": "Herramienta"
+  },
+  {
+    "id": 7,
+    "titulo": "Programa Conjunto OMS/UNICEF de Monitoreo (JMP)",
+    "tipo": "Plataforma de seguimiento",
+    "organizacion": "OMS / UNICEF",
+    "url": "https://washdata.org",
+    "descripcion": "Base de datos oficial con estadísticas de acceso al agua y saneamiento a nivel global. Incluye datos diferenciados por zona (urbana/rural), género y nivel de servicio.",
+    "icono": "📈",
+    "etiqueta": "Datos Oficiales"
+  },
+  {
+    "id": 8,
+    "titulo": "Documental: 'Water & Power: A California Heist'",
+    "tipo": "Documental",
+    "organizacion": "Netflix",
+    "url": "https://www.netflix.com",
+    "descripcion": "Documental sobre la privatización y gestión política del agua en California, que refleja problemas globales sobre acceso, inequidad y poder económico frente al recurso hídrico.",
+    "icono": "🎬",
+    "etiqueta": "Multimedia"
+  }
+]

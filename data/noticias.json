@@ -1,0 +1,62 @@
+[
+  {
+    "id": 1,
+    "titulo": "ONU advierte que el mundo no va por buen camino para lograr el ODS 6 en 2030",
+    "fecha": "2024-03-22",
+    "fuente": "ONU-Agua",
+    "url": "https://www.unwater.org",
+    "resumen": "El informe anual de ONU-Agua revela que al ritmo actual de progreso, el mundo no logrará el acceso universal al agua limpia y el saneamiento para 2030. Se necesitan cuadruplicar los esfuerzos en financiamiento y políticas públicas.",
+    "categoria": "Informe Global",
+    "icono": "📊"
+  },
+  {
+    "id": 2,
+    "titulo": "América Latina avanza en cobertura de agua potable pero el saneamiento sigue rezagado",
+    "fecha": "2024-06-15",
+    "fuente": "CEPAL / OPS",
+    "url": "https://www.cepal.org",
+    "resumen": "Aunque el 94% de la población urbana de América Latina tiene acceso al agua, solo el 32% cuenta con tratamiento adecuado de aguas residuales. Las zonas rurales enfrentan los mayores déficits, con comunidades indígenas en situación crítica.",
+    "categoria": "América Latina",
+    "icono": "🌎"
+  },
+  {
+    "id": 3,
+    "titulo": "Tecnología de filtración solar lleva agua limpia a 500 comunidades en Africa",
+    "fecha": "2024-09-05",
+    "fuente": "UNICEF",
+    "url": "https://www.unicef.org/wash",
+    "resumen": "Un proyecto conjunto de UNICEF y socios locales ha instalado sistemas de purificación solar en 500 comunidades del Sahel africano, beneficiando a más de 300,000 personas con acceso diario a agua potable sin necesidad de electricidad.",
+    "categoria": "Innovación",
+    "icono": "☀️"
+  },
+  {
+    "id": 4,
+    "titulo": "México declara emergencia hídrica en 9 estados por tercer año consecutivo de sequía",
+    "fecha": "2024-07-20",
+    "fuente": "CONAGUA",
+    "url": "https://www.gob.mx/conagua",
+    "resumen": "La Comisión Nacional del Agua reporta que el 45% de los embalses del país opera por debajo del 40% de su capacidad. La sequía prolongada afecta la agricultura, el suministro urbano y genera tensiones por el uso del recurso entre comunidades.",
+    "categoria": "México",
+    "icono": "🇲🇽"
+  },
+  {
+    "id": 5,
+    "titulo": "Nuevo tratado global busca frenar la contaminación de ríos transfronterizos",
+    "fecha": "2024-11-12",
+    "fuente": "Naciones Unidas",
+    "url": "https://www.un.org",
+    "resumen": "Representantes de 140 países firmaron en Ginebra un protocolo para monitorear y reducir la contaminación en los 276 ríos compartidos entre naciones. El acuerdo incluye compromisos de reducción de descargas industriales y residuales.",
+    "categoria": "Política Internacional",
+    "icono": "🤝"
+  },
+  {
+    "id": 6,
+    "titulo": "Jóvenes activistas lanzan campaña global '1 Persona, 1 Litro' para concienciar sobre el desperdicio",
+    "fecha": "2025-01-08",
+    "fuente": "WaterAid",
+    "url": "https://www.wateraid.org",
+    "resumen": "Estudiantes de 60 países impulsan una campaña en redes sociales para visibilizar el contraste entre el consumo diario de 400 litros en países desarrollados y los 20 litros a los que aspiran familias en crisis hídrica.",
+    "categoria": "Activismo Juvenil",
+    "icono": "📱"
+  }
+]
