@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recursos | ODS 6 — Agua Limpia y Saneamiento</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <div class="fondo-agua" aria-hidden="true">
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+  </div>
+
+  <div id="teleprompter"><span id="teleprompter-texto">Cargando...</span></div>
+
+  <nav>
+    <div class="nav-contenido">
+      <a href="../index.html" class="nav-logo"><span class="icono-logo">💧</span>ODS 6</a>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="contexto.html">Contexto</a></li>
+        <li><a href="objetivos.html">Objetivos</a></li>
+        <li><a href="que-puedo-hacer.html">¿Qué puedo hacer?</a></li>
+        <li><a href="alianzas.html">Alianzas</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="recursos.html" class="activo">Recursos</a></li>
+        <li><a href="pacto.html">Pacto</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+      </ul>
+      <button id="btn-modo-oscuro">🌙 Modo oscuro</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="encabezado-pagina">
+      <span class="icono-grande">📚</span>
+      <h1>Recursos Educativos</h1>
+      <p class="subtitulo">
+        Informes, guías, bases de datos y herramientas para aprender más
+        sobre el ODS 6 y actuar con conocimiento.
+      </p>
+    </div>
+
+    <div class="contenedor">
+
+      <div class="burbuja aparecer">
+        <h2>Conocimiento para actuar</h2>
+        <p>
+          El conocimiento es la base de cualquier acción significativa. Aquí encontrarás
+          una selección de recursos de alta calidad, gratuitos y en español (o con versiones
+          en español), producidos por organizaciones internacionales reconocidas. Están
+          organizados por tipo para facilitar su uso según tu perfil y necesidades.
+        </p>
+        <!-- NOTA: para agregar recursos, edita ../data/recursos.json -->
+        <div class="etiquetas" id="filtros-recursos"></div>
+      </div>
+
+      <!-- CONTENEDOR DE RECURSOS: se llena desde recursos.json -->
+      <div id="contenedor-recursos" class="grid-burbujas">
+        <p style="color:#fff; text-align:center; padding:2rem; grid-column:1/-1;">
+          Cargando recursos...
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      💧 <strong>ODS 6 — Recursos</strong> &nbsp;|&nbsp;
+      Compilado de fuentes de <a href="https://www.unwater.org" target="_blank">ONU-Agua</a>,
+      <a href="https://www.who.int" target="_blank">OMS</a> y
+      <a href="https://www.unicef.org" target="_blank">UNICEF</a>
+    </p>
+  </footer>
+
+  <script src="../js/teleprompter.js"></script>
+  <script src="../js/main.js"></script>
+  <!-- La carga de recursos la maneja main.js automáticamente.
+       Para agregar recursos: edita ../data/recursos.json -->
+  <script>
+    /* Script local deshabilitado — main.js ya maneja todo */
+    if (false) {
+
+    fetch('../data/recursos.json')
+      .then(function(r) { return r.json(); })
+      .then(function(recursos) {
+        var contenedor = document.getElementById('contenedor-recursos');
+        contenedor.innerHTML = '';
+
+        // Filtros por etiqueta
+        var etiquetas = [...new Set(recursos.map(function(r) { return r.etiqueta; }))];
+        var filtrosEl = document.getElementById('filtros-recursos');
+        filtrosEl.innerHTML = '<span style="font-size:0.85rem;font-weight:700;color:var(--color-texto-claro);">Filtrar: </span>';
+
+        var btnTodos = document.createElement('button');
+        btnTodos.textContent = 'Todos';
+        btnTodos.className = 'etiqueta';
+        btnTodos.style.cursor = 'pointer';
+        btnTodos.style.border = 'none';
+        btnTodos.addEventListener('click', function() { mostrar(recursos); });
+        filtrosEl.appendChild(btnTodos);
+
+        etiquetas.forEach(function(et) {
+          var btn = document.createElement('button');
+          btn.textContent = et;
+          btn.className = 'etiqueta';
+          btn.style.cursor = 'pointer';
+          btn.style.border = 'none';
+          btn.addEventListener('click', function() {
+            mostrar(recursos.filter(function(r) { return r.etiqueta === et; }));
+          });
+          filtrosEl.appendChild(btn);
+        });
+
+        mostrar(recursos);
+      })
+      .catch(function() {
+        document.getElementById('contenedor-recursos').innerHTML =
+          '<div class="burbuja" style="grid-column:1/-1"><p>⚠️ No se pudieron cargar los recursos. Intenta con un servidor local.</p></div>';
+      });
+
+    function mostrar(lista) {
+      var contenedor = document.getElementById('contenedor-recursos');
+      contenedor.innerHTML = '';
+
+      lista.forEach(function(rec) {
+        var div = document.createElement('div');
+        div.className = 'burbuja tarjeta-icono aparecer';
+        div.innerHTML = `
+          <span class="icono">${rec.icono}</span>
+          <div class="etiquetas"><span class="etiqueta">${rec.etiqueta}</span><span class="etiqueta" style="background:rgba(0,100,50,0.1);color:#006845;border-color:rgba(0,100,50,0.2);">${rec.tipo}</span></div>
+          <h3>${rec.titulo}</h3>
+          <p style="font-size:0.82rem; color:var(--color-texto-claro); font-weight:700; margin:-0.2rem 0 0.3rem;">${rec.organizacion}</p>
+          <p>${rec.descripcion}</p>
+          <a href="${rec.url}" target="_blank" rel="noopener" class="boton-secundario" style="margin-top:0.5rem; display:inline-block; font-size:0.82rem;">
+            Acceder →
+          </a>
+        `;
+        contenedor.appendChild(div);
+      });
+
+      setTimeout(function() {
+        contenedor.querySelectorAll('.aparecer').forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }, 50);
+    }
+    } /* fin bloque deshabilitado */
+  </script>
+</body>
+</html>

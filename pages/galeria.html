@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Galería | ODS 6 — Agua Limpia y Saneamiento</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    /* ============================================================
+       Estilos específicos de la galería
+       ============================================================ */
+
+    /* Filtros de categoría arriba de la galería */
+    .filtros-galeria {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 1.5rem;
+      align-items: center;
+    }
+
+    .filtros-galeria .etiqueta {
+      cursor: pointer;
+      transition: background 0.2s, color 0.2s, transform 0.15s;
+      user-select: none;
+    }
+
+    .filtros-galeria .etiqueta:hover,
+    .filtros-galeria .etiqueta.activo-filtro {
+      background: rgba(0, 112, 184, 0.25);
+      color: #0070b8;
+      transform: translateY(-1px);
+    }
+
+    body.modo-oscuro .filtros-galeria .etiqueta:hover,
+    body.modo-oscuro .filtros-galeria .etiqueta.activo-filtro {
+      background: rgba(0, 194, 224, 0.25);
+      color: var(--color-acento);
+    }
+
+    /* ---- GRID DE LA GALERÍA ---- */
+    /* EDITA minmax(260px, 1fr) para cambiar el tamaño de las tarjetas */
+    #galeria-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.2rem;
+    }
+
+    /* Tarjeta de galería */
+    .galeria-item {
+      border-radius: 16px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.1);
+      border: 1px solid var(--color-borde);
+    }
+
+    .galeria-item:hover {
+      transform: scale(1.04) translateY(-4px);
+      box-shadow: 0 16px 40px rgba(0,80,140,0.3);
+    }
+
+    .galeria-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+      transition: filter 0.25s;
+      background: rgba(0, 80, 140, 0.3); /* Placeholder mientras carga */
+    }
+
+    .galeria-item:hover img {
+      filter: brightness(1.08);
+    }
+
+    .galeria-info {
+      padding: 0.9rem 1rem;
+      background: var(--color-burbuja);
+    }
+
+    .galeria-info h3 {
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #0a4a7c;
+      margin-bottom: 0.3rem;
+    }
+
+    body.modo-oscuro .galeria-info h3 {
+      color: var(--color-acento);
+    }
+
+    .galeria-info p {
+      font-size: 0.82rem;
+      color: var(--color-texto-claro);
+      margin: 0 0 0.4rem;
+      line-height: 1.4;
+    }
+
+    body.modo-oscuro .galeria-info p {
+      color: rgba(200,230,255,0.6);
+    }
+
+    /* ---- MODAL DE LA GALERÍA ---- */
+    /* El modal se abre al hacer clic en una imagen */
+    #modal-galeria {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0, 10, 30, 0.82);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      z-index: 3000;
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+
+    #modal-galeria.activo {
+      display: flex;
+    }
+
+    .modal-caja-galeria {
+      background: var(--color-burbuja);
+      border-radius: 20px;
+      max-width: 640px;
+      width: 100%;
+      padding: 0;
+      overflow: hidden;
+      box-shadow: 0 32px 100px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--color-borde);
+      animation: modal-entrar 0.3s ease;
+      position: relative;
+      color: var(--color-texto);
+    }
+
+    @keyframes modal-entrar {
+      from { opacity: 0; transform: scale(0.88) translateY(20px); }
+      to   { opacity: 1; transform: scale(1)    translateY(0);    }
+    }
+
+    /* Imagen del modal */
+    #modal-imagen {
+      width: 100%;
+      max-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* Contenido de texto del modal */
+    .modal-contenido {
+      padding: 1.6rem 2rem 2rem;
+    }
+
+    .modal-contenido h2 {
+      font-family: var(--fuente-titulo);
+      font-size: 1.4rem;
+      color: #0a4a7c;
+      margin-bottom: 0.8rem;
+    }
+
+    body.modo-oscuro .modal-contenido h2 {
+      color: var(--color-acento);
+    }
+
+    .modal-contenido p {
+      font-size: 0.95rem;
+      line-height: 1.7;
+      color: var(--color-texto);
+      margin-bottom: 0.8rem;
+    }
+
+    .modal-fuente {
+      font-size: 0.8rem;
+      color: var(--color-texto-claro);
+      font-style: italic;
+    }
+
+    body.modo-oscuro .modal-fuente {
+      color: rgba(200, 230, 255, 0.5);
+    }
+
+    /* Botón de cierre del modal */
+    .modal-cerrar-galeria {
+      position: absolute;
+      top: 0.8rem;
+      right: 1rem;
+      background: rgba(0, 0, 0, 0.45);
+      border: none;
+      color: #fff;
+      font-size: 1.4rem;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.2s;
+      line-height: 1;
+    }
+
+    .modal-cerrar-galeria:hover {
+      background: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Contador de imágenes */
+    .galeria-contador {
+      text-align: center;
+      color: rgba(255,255,255,0.6);
+      font-size: 0.85rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+
+    /* Mensaje de error / cargando */
+    .galeria-mensaje {
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1rem;
+      font-size: 1.1rem;
+      grid-column: 1 / -1;
+    }
+
+    /* Responsive: 1 columna en móvil */
+    @media (max-width: 480px) {
+      #galeria-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FONDO ANIMADO CON BURBUJAS (decorativo) -->
+  <div class="fondo-agua" aria-hidden="true">
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+  </div>
+
+  <!-- TELEPROMPTER: texto animado superior -->
+  <!-- Para editar el texto, ve a: ../js/teleprompter.js -->
+  <div id="teleprompter"><span id="teleprompter-texto">Cargando...</span></div>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav>
+    <div class="nav-contenido">
+      <a href="../index.html" class="nav-logo">
+        <span class="icono-logo">💧</span>ODS 6
+      </a>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="contexto.html">Contexto</a></li>
+        <li><a href="objetivos.html">Objetivos</a></li>
+        <li><a href="que-puedo-hacer.html">¿Qué puedo hacer?</a></li>
+        <li><a href="alianzas.html">Alianzas</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+        <li><a href="pacto.html">Pacto</a></li>
+        <li><a href="galeria.html" class="activo">Galería</a></li>
+      </ul>
+      <button id="btn-modo-oscuro">🌙 Modo oscuro</button>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+    <!-- ENCABEZADO DE PÁGINA -->
+    <!-- EDITA el título y subtítulo aquí -->
+    <div class="encabezado-pagina">
+      <span class="icono-grande">🖼️</span>
+      <h1>Galería del Agua</h1>
+      <p class="subtitulo">
+        Imágenes que muestran la realidad del agua en el mundo: sus problemas,
+        sus soluciones y las personas que dependen de ella cada día.
+      </p>
+    </div>
+
+    <div class="contenedor">
+
+      <!-- BLOQUE INTRODUCTORIO -->
+      <div class="burbuja aparecer">
+        <h2>Una imagen vale más que mil datos</h2>
+        <p>
+          Las estadísticas son importantes, pero las imágenes nos conectan emocionalmente
+          con la realidad. Esta galería reúne fotografías que ilustran los distintos aspectos
+          de la crisis global del agua: el acceso desigual, la contaminación, las soluciones
+          innovadoras y el impacto humano de no contar con agua limpia.
+        </p>
+        <p>
+          <strong>Haz clic en cualquier imagen</strong> para ver más detalles sobre
+          cada situación, su contexto y la fuente de información.
+        </p>
+
+        <!-- FILTROS POR CATEGORÍA: se generan dinámicamente -->
+        <div class="filtros-galeria" id="filtros-galeria">
+          <!-- Los botones de filtro se insertan aquí con JavaScript -->
+        </div>
+
+        <!-- CONTADOR DE IMÁGENES -->
+        <div class="galeria-contador" id="galeria-contador"></div>
+      </div>
+
+      <!-- GRID DE LA GALERÍA: se llena dinámicamente desde galeria.json -->
+      <!--
+        PARA AGREGAR IMÁGENES:
+        Edita el archivo /data/galeria.json con el formato:
+        {
+          "id": número,
+          "titulo": "Título de la imagen",
+          "descripcion": "Texto breve",
+          "detalle": "Texto largo para el modal",
+          "categoria": "Categoría",
+          "fuente": "Fuente",
+          "imagen": "URL de la imagen"
+        }
+      -->
+      <div id="galeria-grid">
+        <p class="galeria-mensaje">⏳ Cargando imágenes...</p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ============================================================
+       MODAL DE LA GALERÍA
+       Se muestra al hacer clic en una imagen.
+       El contenido se rellena dinámicamente con JavaScript.
+       ============================================================ -->
+  <div id="modal-galeria" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+
+    <div class="modal-caja-galeria">
+
+      <!-- Botón para cerrar el modal -->
+      <button class="modal-cerrar-galeria" onclick="cerrarModalGaleria()" aria-label="Cerrar">✕</button>
+
+      <!-- Imagen grande -->
+      <img id="modal-imagen" src="" alt="" loading="lazy">
+
+      <!-- Texto del modal -->
+      <div class="modal-contenido">
+        <div class="etiquetas" style="margin-bottom:0.8rem;">
+          <span class="etiqueta" id="modal-categoria"></span>
+        </div>
+        <h2 id="modal-titulo"></h2>
+        <p id="modal-detalle"></p>
+        <p class="modal-fuente" id="modal-fuente"></p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>
+      💧 <strong>ODS 6 — Galería</strong> &nbsp;|&nbsp;
+      Imágenes de <a href="https://unsplash.com" target="_blank">Unsplash</a> •
+      Datos de <a href="https://www.unwater.org" target="_blank">ONU-Agua</a> y
+      <a href="https://www.unicef.org" target="_blank">UNICEF</a>
+    </p>
+  </footer>
+
+  <!-- SCRIPTS -->
+  <!-- Orden importante: primero teleprompter, luego main -->
+  <script src="../js/teleprompter.js"></script>
+  <script src="../js/main.js"></script>
+
+  <script>
+    /* ============================================================
+       Script específico de galeria.html
+       Genera los filtros por categoría encima de la galería.
+       La lógica principal está en main.js → iniciarGaleria()
+       ============================================================ */
+
+    // Esperar a que main.js cargue la galería y luego añadir filtros por categoría
+    // Sobreescribimos renderizarGaleria para inyectar los filtros también
+    var _todosLosItems = [];
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // Cerrar modal al hacer clic fuera de la caja
+      var modal = document.getElementById('modal-galeria');
+      modal.addEventListener('click', function (e) {
+        if (e.target === modal) cerrarModalGaleria();
+      });
+
+      // Cerrar modal con tecla Escape
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') cerrarModalGaleria();
+      });
+
+    });
+
+    // Extendemos renderizarGaleria para incluir los filtros de categoría
+    // Esta función se ejecuta DESPUÉS de que main.js la define
+    window.addEventListener('load', function () {
+      // Inyectamos filtros de categoría una vez que la galería esté cargada
+      // usando MutationObserver para detectar cuándo se inserta el contenido
+      var grid = document.getElementById('galeria-grid');
+      var observer = new MutationObserver(function () {
+        generarFiltrosGaleria();
+        observer.disconnect(); // Solo una vez
+      });
+      observer.observe(grid, { childList: true });
+    });
+
+    /* ============================================================
+       Genera los botones de filtro por categoría encima de la galería.
+       Usa los datos ya renderizados en el grid.
+       ============================================================ */
+    function generarFiltrosGaleria() {
+      var items = document.querySelectorAll('#galeria-grid .galeria-item');
+      var filtrosEl = document.getElementById('filtros-galeria');
+      var contadorEl = document.getElementById('galeria-contador');
+
+      if (!filtrosEl || !items.length) return;
+
+      // Actualizar contador
+      if (contadorEl) {
+        contadorEl.textContent = items.length + ' imagen' + (items.length !== 1 ? 'es' : '');
+      }
+
+      // Extraer categorías únicas desde los spans .etiqueta de cada ítem
+      var categorias = ['Todas'];
+      items.forEach(function (item) {
+        var etiq = item.querySelector('.etiqueta');
+        if (etiq && categorias.indexOf(etiq.textContent) === -1) {
+          categorias.push(etiq.textContent);
+        }
+      });
+
+      filtrosEl.innerHTML = '<span style="font-size:0.85rem;font-weight:700;color:var(--color-texto-claro);">Filtrar: </span>';
+
+      categorias.forEach(function (cat) {
+        var btn = document.createElement('button');
+        btn.textContent = cat;
+        btn.className = 'etiqueta';
+
+        if (cat === 'Todas') btn.classList.add('activo-filtro');
+
+        btn.addEventListener('click', function () {
+          // Quitar clase activo-filtro de todos
+          filtrosEl.querySelectorAll('.etiqueta').forEach(function (b) {
+            b.classList.remove('activo-filtro');
+          });
+          btn.classList.add('activo-filtro');
+
+          // Mostrar u ocultar ítems según categoría
+          var total = 0;
+          items.forEach(function (item) {
+            var etiq = item.querySelector('.etiqueta');
+            if (cat === 'Todas' || (etiq && etiq.textContent === cat)) {
+              item.style.display = '';
+              total++;
+            } else {
+              item.style.display = 'none';
+            }
+          });
+
+          // Actualizar contador
+          if (contadorEl) {
+            contadorEl.textContent = total + ' imagen' + (total !== 1 ? 'es' : '');
+          }
+        });
+
+        filtrosEl.appendChild(btn);
+      });
+    }
+  </script>
+
+</body>
+</html>
