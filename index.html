@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ODS 6 — Agua Limpia y Saneamiento para Todos</title>
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    /* Estilos de estadísticas en grid (solo para la portada) */
+    .grid-estadisticas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1.2rem;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- FONDO ANIMADO -->
+  <div class="fondo-agua" aria-hidden="true">
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div>
+  </div>
+
+  <!-- TELEPROMPTER: para editar el texto ve a js/teleprompter.js -->
+  <div id="teleprompter"><span id="teleprompter-texto">Cargando...</span></div>
+
+  <!-- BARRA DE NAVEGACIÓN -->
+  <nav>
+    <div class="nav-contenido">
+      <a href="index.html" class="nav-logo">
+        <span class="icono-logo">💧</span>ODS 6
+      </a>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html" class="activo">Inicio</a></li>
+        <li><a href="pages/contexto.html">Contexto</a></li>
+        <li><a href="pages/objetivos.html">Objetivos</a></li>
+        <li><a href="pages/que-puedo-hacer.html">¿Qué puedo hacer?</a></li>
+        <li><a href="pages/alianzas.html">Alianzas</a></li>
+        <li><a href="pages/noticias.html">Noticias</a></li>
+        <li><a href="pages/recursos.html">Recursos</a></li>
+        <li><a href="pages/pacto.html">Pacto</a></li>
+        <li><a href="pages/galeria.html">Galería</a></li>
+      </ul>
+      <button id="btn-modo-oscuro">🌙 Modo oscuro</button>
+    </div>
+  </nav>
+
+  <!-- CONTENIDO PRINCIPAL -->
+  <main>
+
+    <!-- SECCIÓN HERO (portada) -->
+    <section class="hero">
+      <span class="hero-badge">ODS 6 · Agenda 2030</span>
+      <h1>
+        Agua limpia y<br>
+        <span class="acento">saneamiento</span><br>
+        para todos
+      </h1>
+      <p>
+        2,200 millones de personas no tienen acceso a agua potable segura.
+        Conoce el problema, sus causas y cómo tú puedes ser parte de la solución.
+      </p>
+      <div style="display:flex; gap:1rem; flex-wrap:wrap; justify-content:center;">
+        <a href="pages/contexto.html" class="boton">Explorar el contexto →</a>
+        <a href="pages/que-puedo-hacer.html" class="boton-secundario">¿Qué puedo hacer?</a>
+      </div>
+    </section>
+
+    <div class="contenedor">
+
+      <!-- ESTADÍSTICAS CLAVE -->
+      <div class="burbuja aparecer">
+        <h2>La crisis en números</h2>
+        <div class="grid-estadisticas">
+          <div class="estadistica">
+            <span class="numero">2,200M</span>
+            <span class="descripcion">personas sin agua potable segura</span>
+          </div>
+          <div class="estadistica">
+            <span class="numero">3,600M</span>
+            <span class="descripcion">sin saneamiento adecuado</span>
+          </div>
+          <div class="estadistica">
+            <span class="numero">80%</span>
+            <span class="descripcion">de aguas residuales sin tratar</span>
+          </div>
+          <div class="estadistica">
+            <span class="numero">6 km</span>
+            <span class="descripcion">promedio que caminan mujeres por agua</span>
+          </div>
+          <div class="estadistica">
+            <span class="numero">2030</span>
+            <span class="descripcion">meta: agua para todos</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- MENÚ DE ACCESO RÁPIDO -->
+      <!-- EDITA los títulos y descripciones de cada tarjeta aquí -->
+      <div class="burbuja aparecer">
+        <h2>¿Qué quieres explorar?</h2>
+        <div class="grid-menu">
+
+          <a href="pages/contexto.html" class="tarjeta-menu">
+            <span class="icono">🌍</span>
+            <span class="titulo">Contexto</span>
+            <span class="desc">¿Por qué el agua es una crisis global?</span>
+          </a>
+
+          <a href="pages/objetivos.html" class="tarjeta-menu">
+            <span class="icono">🎯</span>
+            <span class="titulo">Objetivos</span>
+            <span class="desc">Las 8 metas del ODS 6 explicadas</span>
+          </a>
+
+          <a href="pages/que-puedo-hacer.html" class="tarjeta-menu">
+            <span class="icono">🙋</span>
+            <span class="titulo">Acciones</span>
+            <span class="desc">Cosas concretas que puedes hacer tú</span>
+          </a>
+
+          <a href="pages/alianzas.html" class="tarjeta-menu">
+            <span class="icono">🤝</span>
+            <span class="titulo">Alianzas</span>
+            <span class="desc">Organizaciones que trabajan por el agua</span>
+          </a>
+
+          <a href="pages/noticias.html" class="tarjeta-menu">
+            <span class="icono">📰</span>
+            <span class="titulo">Noticias</span>
+            <span class="desc">Lo más reciente sobre el ODS 6</span>
+          </a>
+
+          <a href="pages/recursos.html" class="tarjeta-menu">
+            <span class="icono">📚</span>
+            <span class="titulo">Recursos</span>
+            <span class="desc">Informes, guías y herramientas</span>
+          </a>
+
+          <a href="pages/pacto.html" class="tarjeta-menu">
+            <span class="icono">📜</span>
+            <span class="titulo">Pacto</span>
+            <span class="desc">El acuerdo global del futuro</span>
+          </a>
+
+          <a href="pages/galeria.html" class="tarjeta-menu">
+            <span class="icono">🖼️</span>
+            <span class="titulo">Galería</span>
+            <span class="desc">La realidad del agua en imágenes</span>
+          </a>
+
+        </div>
+      </div>
+
+      <!-- FRASE DESTACADA -->
+      <div class="burbuja aparecer">
+        <div class="cita">
+          "El acceso al agua potable segura es un derecho humano fundamental.
+          Sin agua, no hay salud, no hay educación, no hay dignidad."
+          — ONU, 2010
+        </div>
+        <p>
+          El <strong>ODS 6</strong> fue adoptado en 2015 por todos los países miembros
+          de las Naciones Unidas como parte de la Agenda 2030 para el Desarrollo
+          Sostenible. Su objetivo es garantizar el acceso al agua limpia y al
+          saneamiento básico para <em>toda</em> la población del planeta antes del
+          año 2030.
+        </p>
+        <p>
+          A menos de cinco años de la fecha límite, el progreso es insuficiente.
+          Se necesita multiplicar por cuatro el ritmo de avance actual.
+          <strong>Tu conocimiento y tus acciones forman parte del cambio necesario.</strong>
+        </p>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- PIE DE PÁGINA -->
+  <footer>
+    <p>
+      💧 <strong>ODS 6 — Agua Limpia y Saneamiento</strong> &nbsp;|&nbsp;
+      Información de <a href="https://www.unwater.org" target="_blank">ONU-Agua</a>,
+      <a href="https://washdata.org" target="_blank">OMS/UNICEF JMP</a> y
+      <a href="https://sdgs.un.org/goals/goal6" target="_blank">ONU SDGs</a>
+    </p>
+  </footer>
+
+  <!-- SCRIPTS: teleprompter primero, luego main -->
+  <script src="js/teleprompter.js"></script>
+  <script src="js/main.js"></script>
+
+</body>
+</html>
