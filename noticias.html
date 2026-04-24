@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Noticias | ODS 6 — Agua Limpia y Saneamiento</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+  <style>
+    /* Estilos específicos de la página de noticias */
+    .tarjeta-noticia {
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+
+    .noticia-icono-grande {
+      font-size: 2.8rem;
+      flex-shrink: 0;
+      line-height: 1;
+    }
+
+    .noticia-cuerpo {
+      flex: 1;
+    }
+
+    .noticia-meta {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-bottom: 0.5rem;
+    }
+
+    .noticia-fecha {
+      font-size: 0.78rem;
+      color: #0070b8;
+      font-weight: 700;
+    }
+
+    body.modo-oscuro .noticia-fecha {
+      color: var(--color-acento);
+    }
+
+    .noticia-fuente {
+      font-size: 0.78rem;
+      color: rgba(0,0,0,0.45);
+      font-weight: 600;
+    }
+
+    body.modo-oscuro .noticia-fuente {
+      color: rgba(200,230,255,0.5);
+    }
+
+    .noticia-cuerpo h3 {
+      font-size: 1.05rem;
+      color: #0a4a7c;
+      margin-bottom: 0.5rem;
+      font-weight: 800;
+    }
+
+    body.modo-oscuro .noticia-cuerpo h3 {
+      color: var(--color-acento);
+    }
+
+    .noticia-cuerpo p {
+      font-size: 0.92rem;
+      line-height: 1.65;
+      color: var(--color-texto);
+    }
+
+    .noticia-leer {
+      display: inline-block;
+      margin-top: 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #0070b8;
+      text-decoration: none;
+    }
+
+    body.modo-oscuro .noticia-leer {
+      color: var(--color-acento);
+    }
+
+    .noticia-leer:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 480px) {
+      .tarjeta-noticia {
+        flex-direction: column;
+        gap: 0.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="fondo-agua" aria-hidden="true">
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+  </div>
+
+  <div id="teleprompter"><span id="teleprompter-texto">Cargando...</span></div>
+
+  <nav>
+    <div class="nav-contenido">
+      <a href="../index.html" class="nav-logo"><span class="icono-logo">💧</span>ODS 6</a>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="contexto.html">Contexto</a></li>
+        <li><a href="objetivos.html">Objetivos</a></li>
+        <li><a href="que-puedo-hacer.html">¿Qué puedo hacer?</a></li>
+        <li><a href="alianzas.html">Alianzas</a></li>
+        <li><a href="noticias.html" class="activo">Noticias</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+        <li><a href="pacto.html">Pacto</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+      </ul>
+      <button id="btn-modo-oscuro">🌙 Modo oscuro</button>
+    </div>
+  </nav>
+
+  <main>
+    <div class="encabezado-pagina">
+      <span class="icono-grande">📰</span>
+      <h1>Noticias y Medios</h1>
+      <p class="subtitulo">
+        Las noticias más relevantes sobre el ODS 6, la crisis global del agua
+        y los avances hacia un mundo con agua para todos.
+      </p>
+    </div>
+
+    <div class="contenedor">
+
+      <div class="burbuja aparecer">
+        <h2>¿Por qué informarse sobre el agua?</h2>
+        <p>
+          Estar informado es el primer paso para actuar. La crisis del agua raramente
+          ocupa los primeros titulares, aunque afecta a más personas que muchos conflictos
+          que sí generan portadas. Conocer lo que está pasando — en tu región y en el mundo —
+          te permite tomar mejores decisiones, conversar sobre el tema y exigir a quienes
+          toman decisiones que actúen con urgencia.
+        </p>
+        <p>
+          Las noticias que aparecen a continuación están cargadas desde un archivo de datos
+          local y reflejan eventos reales reportados por organismos internacionales y medios
+          especializados.
+        </p>
+        <!-- NOTA PARA EL DESARROLLADOR: para agregar noticias, edita el archivo data/noticias.json -->
+        <div class="etiquetas" id="filtros-noticias">
+          <!-- Los filtros se generan dinámicamente -->
+        </div>
+      </div>
+
+      <!-- CONTENEDOR DE NOTICIAS: se llena dinámicamente desde noticias.json -->
+      <div id="contenedor-noticias">
+        <p style="color:#fff; text-align:center; padding:2rem;">
+          Cargando noticias...
+        </p>
+      </div>
+
+      <!-- AVISO -->
+      <div class="burbuja aparecer">
+        <h2>📡 Fuentes recomendadas para seguir el ODS 6</h2>
+        <p>
+          Para mantenerte actualizado sobre noticias de agua y saneamiento, te recomendamos
+          seguir estas fuentes confiables:
+        </p>
+        <ul>
+          <li><strong>ONU-Agua</strong> (<a href="https://www.unwater.org" target="_blank">unwater.org</a>) — Noticias e informes del sistema ONU sobre el agua.</li>
+          <li><strong>UNICEF WASH</strong> (<a href="https://www.unicef.org/wash" target="_blank">unicef.org/wash</a>) — Avances en agua y saneamiento para la infancia.</li>
+          <li><strong>WaterAid</strong> (<a href="https://www.wateraid.org/news" target="_blank">wateraid.org/news</a>) — Reportajes y actualizaciones sobre comunidades en crisis hídrica.</li>
+          <li><strong>The Water Network</strong> (<a href="https://thewaternetwork.com" target="_blank">thewaternetwork.com</a>) — Plataforma especializada con noticias diarias del sector agua.</li>
+          <li><strong>Circle of Blue</strong> (<a href="https://www.circleofblue.org" target="_blank">circleofblue.org</a>) — Periodismo investigativo sobre el agua a nivel global.</li>
+          <li><strong>SDG Knowledge Hub</strong> (<a href="https://sdg.iisd.org" target="_blank">sdg.iisd.org</a>) — Seguimiento de las noticias sobre todos los ODS, incluido el 6.</li>
+        </ul>
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>
+      💧 <strong>ODS 6 — Noticias</strong> &nbsp;|&nbsp;
+      Contenido compilado de fuentes de <a href="https://www.unwater.org" target="_blank">ONU-Agua</a>
+    </p>
+  </footer>
+
+  <script src="../js/teleprompter.js"></script>
+  <script src="../js/main.js"></script>
+  <!-- La carga de noticias la maneja main.js automáticamente.
+       Para agregar noticias: edita ../data/noticias.json -->
+  <script>
+    /* Script local deshabilitado — main.js ya maneja todo */
+    if (false) {
+
+    // Función para formatear fecha en español
+    function formatearFecha(fechaStr) {
+      var meses = [
+        'enero','febrero','marzo','abril','mayo','junio',
+        'julio','agosto','septiembre','octubre','noviembre','diciembre'
+      ];
+      var partes = fechaStr.split('-');
+      return parseInt(partes[2]) + ' de ' + meses[parseInt(partes[1]) - 1] + ' de ' + partes[0];
+    }
+
+    // Cargar noticias desde JSON
+    fetch('../data/noticias.json')
+      .then(function(resp) { return resp.json(); })
+      .then(function(noticias) {
+        var contenedor = document.getElementById('contenedor-noticias');
+        contenedor.innerHTML = '';
+
+        // Generar filtros de categorías
+        var categorias = [...new Set(noticias.map(function(n) { return n.categoria; }))];
+        var filtrosContenedor = document.getElementById('filtros-noticias');
+        filtrosContenedor.innerHTML = '<span style="font-size:0.85rem; font-weight:700; color:var(--color-texto-claro);">Filtrar por:</span> ';
+
+        var btnTodas = document.createElement('button');
+        btnTodas.textContent = 'Todas';
+        btnTodas.className = 'etiqueta';
+        btnTodas.style.cursor = 'pointer';
+        btnTodas.style.border = 'none';
+        btnTodas.addEventListener('click', function() {
+          mostrarNoticias(noticias, noticias);
+        });
+        filtrosContenedor.appendChild(btnTodas);
+
+        categorias.forEach(function(cat) {
+          var btn = document.createElement('button');
+          btn.textContent = cat;
+          btn.className = 'etiqueta';
+          btn.style.cursor = 'pointer';
+          btn.style.border = 'none';
+          btn.addEventListener('click', function() {
+            var filtradas = noticias.filter(function(n) { return n.categoria === cat; });
+            mostrarNoticias(filtradas, noticias);
+          });
+          filtrosContenedor.appendChild(btn);
+        });
+
+        mostrarNoticias(noticias, noticias);
+      })
+      .catch(function(err) {
+        document.getElementById('contenedor-noticias').innerHTML =
+          '<div class="burbuja"><p style="text-align:center;">⚠️ No se pudieron cargar las noticias. Asegúrate de abrir el sitio desde un servidor local o un navegador compatible.</p></div>';
+      });
+
+    // Función para renderizar noticias
+    function mostrarNoticias(lista, todas) {
+      var contenedor = document.getElementById('contenedor-noticias');
+      contenedor.innerHTML = '';
+
+      if (lista.length === 0) {
+        contenedor.innerHTML = '<div class="burbuja"><p>No hay noticias en esta categoría.</p></div>';
+        return;
+      }
+
+      lista.forEach(function(noticia, i) {
+        var div = document.createElement('div');
+        div.className = 'burbuja aparecer';
+        div.innerHTML = `
+          <div class="tarjeta-noticia">
+            <span class="noticia-icono-grande">${noticia.icono}</span>
+            <div class="noticia-cuerpo">
+              <div class="noticia-meta">
+                <span class="noticia-fecha">📅 ${formatearFecha(noticia.fecha)}</span>
+                <span class="noticia-fuente">📌 ${noticia.fuente}</span>
+                <span class="etiqueta">${noticia.categoria}</span>
+              </div>
+              <h3>${noticia.titulo}</h3>
+              <p>${noticia.resumen}</p>
+              <a href="${noticia.url}" target="_blank" rel="noopener" class="noticia-leer">
+                Leer más en ${noticia.fuente} →
+              </a>
+            </div>
+          </div>
+        `;
+        // Animación escalonada
+        div.style.animationDelay = (i * 0.08) + 's';
+        contenedor.appendChild(div);
+      });
+
+      // Re-activar animaciones de scroll
+      setTimeout(function() {
+        var nuevosEls = contenedor.querySelectorAll('.aparecer');
+        nuevosEls.forEach(function(el) {
+          el.classList.add('visible');
+        });
+      }, 50);
+    }
+    } /* fin bloque deshabilitado */
+  </script>
+</body>
+</html>

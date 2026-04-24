@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contexto | ODS 6 — Agua Limpia y Saneamiento</title>
+  <link rel="stylesheet" href="../css/estilos.css">
+</head>
+<body>
+
+  <div class="fondo-agua" aria-hidden="true">
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+    <div class="burbuja-fondo"></div><div class="burbuja-fondo"></div>
+  </div>
+
+  <div id="teleprompter"><span id="teleprompter-texto">Cargando...</span></div>
+
+  <nav>
+    <div class="nav-contenido">
+      <a href="../index.html" class="nav-logo"><span class="icono-logo">💧</span>ODS 6</a>
+      <button id="menu-toggle" aria-label="Abrir menú">☰</button>
+      <ul class="nav-links">
+        <li><a href="../index.html">Inicio</a></li>
+        <li><a href="contexto.html" class="activo">Contexto</a></li>
+        <li><a href="objetivos.html">Objetivos</a></li>
+        <li><a href="que-puedo-hacer.html">¿Qué puedo hacer?</a></li>
+        <li><a href="alianzas.html">Alianzas</a></li>
+        <li><a href="noticias.html">Noticias</a></li>
+        <li><a href="recursos.html">Recursos</a></li>
+        <li><a href="pacto.html">Pacto</a></li>
+        <li><a href="galeria.html">Galería</a></li>
+      </ul>
+      <button id="btn-modo-oscuro">🌙 Modo oscuro</button>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ENCABEZADO DE PÁGINA -->
+    <div class="encabezado-pagina">
+      <span class="icono-grande">🌍</span>
+      <!-- EDITA EL TÍTULO Y SUBTÍTULO DE ESTA SECCIÓN AQUÍ -->
+      <h1>Contexto del ODS 6</h1>
+      <p class="subtitulo">
+        ¿Qué es el ODS 6? ¿Por qué el agua es una crisis global?
+        Aquí encontrarás el panorama completo.
+      </p>
+    </div>
+
+    <div class="contenedor">
+
+      <!-- BLOQUE 1: ¿Qué es el ODS 6? -->
+      <!-- EDITA EL TEXTO DE CADA BLOQUE AQUÍ -->
+      <div class="burbuja aparecer">
+        <h2>¿Qué es el ODS 6?</h2>
+        <p>
+          El <strong>Objetivo de Desarrollo Sostenible 6 (ODS 6)</strong> es una de las 17 metas globales
+          adoptadas por todos los países miembros de las Naciones Unidas en 2015, dentro de la
+          <strong>Agenda 2030 para el Desarrollo Sostenible</strong>. Su propósito central es garantizar
+          la disponibilidad y gestión sostenible del agua dulce y el saneamiento para todas las personas
+          del planeta antes del año 2030.
+        </p>
+        <p>
+          Este objetivo reconoce que el acceso al agua limpia y al saneamiento básico no es un lujo,
+          sino un <strong>derecho humano fundamental</strong> proclamado por la Asamblea General de la ONU
+          en 2010. Sin agua segura y sanitación adecuada, es imposible alcanzar la salud, la educación,
+          la igualdad de género o el desarrollo económico.
+        </p>
+        <div class="cita">
+          "Garantizar el acceso universal al agua potable segura y asequible para todos en 2030."
+          — Meta 6.1 del ODS 6
+        </div>
+      </div>
+
+      <!-- BLOQUE 2: La escasez de agua -->
+      <div class="burbuja aparecer">
+        <h2>🌊 La escasez de agua: un problema creciente</h2>
+        <p>
+          Aunque el 71% de la superficie terrestre está cubierta de agua, solo el <strong>2.5%</strong>
+          de toda esa agua es dulce, y de ella, apenas el <strong>0.3%</strong> está disponible en ríos,
+          lagos y mantos acuíferos accesibles para el consumo humano. El resto está atrapada en glaciares
+          o bajo tierra a profundidades inaccesibles.
+        </p>
+        <p>
+          Esta escasez se agrava por el <strong>cambio climático</strong>, que altera los patrones de
+          lluvia y acelera la desaparición de glaciares; por el <strong>crecimiento poblacional</strong>,
+          que aumenta la demanda; y por la <strong>contaminación</strong>, que inutiliza fuentes que
+          antes eran aprovechables. Se estima que para 2050, hasta <strong>5,000 millones de personas</strong>
+          podrían vivir en zonas con grave escasez de agua.
+        </p>
+
+        <!-- EDITA O AGREGA BARRAS DE PROGRESO AQUÍ -->
+        <h3>Acceso al agua por región (datos OMS/UNICEF 2024)</h3>
+        <div class="progreso-contenedor">
+          <label>Europa — Acceso a agua potable gestionada de forma segura: 95%</label>
+          <div class="barra-progreso"><div class="barra-progreso-fill" style="width:95%"></div></div>
+        </div>
+        <div class="progreso-contenedor">
+          <label>América Latina — Acceso a agua potable básica: 91%</label>
+          <div class="barra-progreso"><div class="barra-progreso-fill" style="width:91%"></div></div>
+        </div>
+        <div class="progreso-contenedor">
+          <label>Asia Oriental — Acceso a agua potable básica: 85%</label>
+          <div class="barra-progreso"><div class="barra-progreso-fill" style="width:85%"></div></div>
+        </div>
+        <div class="progreso-contenedor">
+          <label>África Subsahariana — Acceso a agua potable básica: 59%</label>
+          <div class="barra-progreso"><div class="barra-progreso-fill" style="width:59%"></div></div>
+        </div>
+      </div>
+
+      <!-- BLOQUE 3: Contaminación del agua -->
+      <div class="burbuja aparecer">
+        <h2>☠️ La contaminación: el agua que no podemos beber</h2>
+        <p>
+          Millones de toneladas de residuos industriales, agrícolas y domésticos se vierten a
+          diario en ríos, lagos y océanos. El <strong>80% de las aguas residuales</strong> del mundo
+          se devuelve al medio ambiente sin ningún tratamiento previo. Este vertimiento contamina
+          no solo el agua superficial, sino también los <strong>acuíferos subterráneos</strong>, que
+          tardan décadas en recuperarse.
+        </p>
+        <p>
+          Entre los contaminantes más peligrosos se encuentran los <strong>nitratos</strong> de
+          fertilizantes agrícolas, los metales pesados como arsénico, plomo y mercurio de la
+          minería, los <strong>microplásticos</strong> que se infiltran en la cadena alimentaria,
+          y las bacterias y virus de las aguas fecales sin tratar. El resultado es un ciclo de
+          enfermedades prevenibles que año tras año cobra miles de vidas, especialmente entre
+          la población más vulnerable: niños menores de 5 años.
+        </p>
+      </div>
+
+      <!-- BLOQUE 4: Acceso desigual -->
+      <div class="burbuja aparecer">
+        <h2>⚖️ Acceso desigual: una injusticia global</h2>
+        <p>
+          La crisis del agua no afecta a todos por igual. Existe una profunda <strong>brecha entre
+          países ricos y pobres</strong>, entre zonas urbanas y rurales, y entre hombres y mujeres.
+          En los países de ingresos bajos, las familias más pobres pagan hasta <strong>10 veces más</strong>
+          por litro de agua que los hogares conectados a la red pública — y el agua que obtienen
+          suele ser de peor calidad.
+        </p>
+        <p>
+          En zonas rurales de África y Asia, son las <strong>mujeres y las niñas</strong> quienes
+          cargan con la responsabilidad de buscar agua: caminan en promedio 6 km diarios, tiempo
+          que les roba horas de escuela, trabajo y descanso. Se estima que estas labores de acarreo
+          representan <strong>200 millones de horas al día</strong> a nivel global — tiempo productivo
+          perdido que perpetúa la pobreza.
+        </p>
+
+        <!-- TABLA COMPARATIVA -->
+        <h3>Comparativa de acceso al saneamiento seguro</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Región</th>
+              <th>Saneamiento seguro</th>
+              <th>Defecación al aire libre</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Europa y América del Norte</td><td>89%</td><td>&lt;1%</td></tr>
+            <tr><td>América Latina</td><td>31%</td><td>3%</td></tr>
+            <tr><td>Asia Meridional</td><td>28%</td><td>11%</td></tr>
+            <tr><td>África Subsahariana</td><td>14%</td><td>21%</td></tr>
+            <tr><td>Oceanía (excl. Australia/NZ)</td><td>19%</td><td>28%</td></tr>
+          </tbody>
+        </table>
+        <p style="font-size:0.8rem; color:#0070b8; margin-top:0.5rem;">
+          Fuente: Programa Conjunto OMS/UNICEF de Monitoreo (JMP), 2023.
+        </p>
+      </div>
+
+      <!-- BLOQUE 5: El agua y la salud -->
+      <div class="burbuja aparecer">
+        <h2>🏥 El agua y la salud pública</h2>
+        <p>
+          El agua contaminada y la falta de saneamiento son la causa de enfermedades como la
+          diarrea, el cólera, la disentería, la fiebre tifoidea y la hepatitis A. La
+          <strong>diarrea</strong> — en gran parte prevenible con agua limpia y lavado de manos —
+          mata a más de <strong>430,000 personas al año</strong>, siendo la principal causa de
+          muerte infantil en muchos países en desarrollo.
+        </p>
+        <p>
+          La buena noticia es que las soluciones son conocidas y relativamente simples: agua
+          potable, saneamiento básico y promoción del lavado de manos pueden reducir la
+          mortalidad por diarrea hasta en un <strong>65%</strong>. Por cada dólar invertido en
+          agua y saneamiento, se generan entre <strong>5 y 28 dólares</strong> de retorno en
+          salud, productividad y reducción de costos médicos.
+        </p>
+
+        <div class="etiquetas">
+          <span class="etiqueta">Diarrea</span>
+          <span class="etiqueta">Cólera</span>
+          <span class="etiqueta">Fiebre tifoidea</span>
+          <span class="etiqueta">Hepatitis A</span>
+          <span class="etiqueta">Parasitosis intestinal</span>
+          <span class="etiqueta">Desnutrición crónica</span>
+        </div>
+      </div>
+
+      <!-- BLOQUE 6: El agua y el cambio climático -->
+      <div class="burbuja aparecer">
+        <h2>🌡️ El agua y el cambio climático</h2>
+        <p>
+          El cambio climático está amplificando la crisis del agua de maneras complejas.
+          Las regiones que ya sufren sequías experimentan períodos más prolongados y severos.
+          Las zonas que reciben lluvias están experimentando eventos más intensos y concentrados,
+          lo que genera inundaciones en lugar de recarga de acuíferos. Los glaciares que alimentan
+          ríos en Asia y América del Sur se reducen año tras año.
+        </p>
+        <p>
+          Esto hace que la gestión sostenible del agua sea también una <strong>estrategia de
+          adaptación climática</strong>. Ciudades que invierten en infraestructura hídrica resiliente,
+          sistemas de captación de agua de lluvia y restauración de ecosistemas acuáticos están
+          mejor preparadas para enfrentar un clima cada vez más impredecible.
+        </p>
+
+        <!-- AGREGA MÁS PÁRRAFOS AQUÍ SI NECESITAS -->
+      </div>
+
+    </div><!-- fin .contenedor -->
+  </main>
+
+  <footer>
+    <p>
+      💧 <strong>ODS 6 — Contexto</strong> &nbsp;|&nbsp;
+      Datos de <a href="https://www.unwater.org" target="_blank">ONU-Agua</a>,
+      <a href="https://washdata.org" target="_blank">OMS/UNICEF JMP</a>
+    </p>
+  </footer>
+
+  <script src="../js/teleprompter.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>
